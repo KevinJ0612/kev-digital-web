@@ -1,11 +1,116 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// src/pages/index.astro
+const recursos = [
+  {
+    titulo: "Cheat Sheet: Spring Boot",
+    categoria: "Desarrollo",
+    descripcion: "Anotaciones esenciales para crear APIs REST en Java.",
+    enlace: "#"
+  },
+  {
+    titulo: "Plantilla de Presupuesto",
+    categoria: "Finanzas",
+    descripcion: "Excel automatizado para controlar gastos universitarios.",
+    enlace: "#"
+  },
+  {
+    titulo: "Esquemas SQL - E-commerce",
+    categoria: "Bases de Datos",
+    descripcion: "Estructura relacional lista para tu próximo proyecto backend.",
+    enlace: "#"
+  }
+];
 ---
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Kev | Digital - Recursos Gratuitos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  
+  <style is:global>
+    @import "tailwindcss";
+  </style>
 
-<Layout>
-	<Welcome />
-</Layout>
+  <body class="bg-yellow-400 font-['Space_Grotesk'] text-black min-h-screen">
+    
+    <main class="max-w-5xl mx-auto p-6 mt-12 mb-20">
+      
+      <!-- Hero Section -->
+      <header class="bg-white border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] p-8 mb-12">
+        <h1 class="text-5xl md:text-6xl font-bold mb-4 uppercase tracking-tight">Kev | Digital</h1>
+        <p class="text-xl font-bold mb-6 text-gray-800">Apuntes, código y plantillas para sobrevivir en tech.</p>
+        
+        <a href="#recursos" class="inline-block bg-blue-500 text-white font-bold text-lg py-3 px-6 border-4 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+          Ver recursos gratuitos
+        </a>
+      </header>
+
+      <!-- Barra de Filtros -->
+      <nav class="flex flex-wrap gap-4 mb-8" id="filtros">
+        <button data-filtro="todos" class="filtro-btn bg-black text-white font-bold py-2 px-4 border-2 border-black hover:bg-white hover:text-black transition-colors">Todos</button>
+        <button data-filtro="Desarrollo" class="filtro-btn bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-green-400 transition-colors">Desarrollo</button>
+        <button data-filtro="Finanzas" class="filtro-btn bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-green-400 transition-colors">Finanzas</button>
+        <button data-filtro="Bases de Datos" class="filtro-btn bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-green-400 transition-colors">Bases de Datos</button>
+      </nav>
+
+      <!-- Cuadrícula de Recursos -->
+      <section id="recursos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        {recursos.map((recurso) => (
+          <article class="recurso-card bg-white border-4 border-black p-6 shadow-[6px_6px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-rotate-2 hover:shadow-[8px_8px_0px_rgba(0,0,0,1)] transition-all flex flex-col" data-categoria={recurso.categoria}>
+            <span class="inline-block bg-green-400 border-2 border-black px-3 py-1 text-xs font-bold uppercase mb-4 self-start">
+              {recurso.categoria}
+            </span>
+            <h3 class="text-2xl font-bold mb-3 leading-tight">{recurso.titulo}</h3>
+            <p class="text-gray-800 font-medium mb-6 flex-grow">{recurso.descripcion}</p>
+            
+            <a href={recurso.enlace} target="_blank" class="block w-full text-center bg-black text-white font-bold text-lg py-3 border-2 border-black hover:bg-white hover:text-black transition-colors">
+              Descargar
+            </a>
+          </article>
+        ))}
+      </section>
+
+      <!-- Sobre el Creador (Autenticidad) -->
+      <section class="bg-white border-4 border-black p-8 shadow-[8px_8px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row gap-8 items-center">
+        <div class="w-32 h-32 bg-gray-200 border-4 border-black flex-shrink-0 flex items-center justify-center overflow-hidden">
+          <!-- TODO: Reemplazar por tu foto real -->
+          <span class="text-xs font-bold text-center p-2">TU FOTO AQUÍ</span>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold mb-3 uppercase">Sobre mí</h2>
+          <p class="text-lg font-medium text-gray-800 mb-4">
+            Soy estudiante de Computación e Informática, desarrollador backend (Java/Spring Boot) y creador de contenido. Construí este espacio para compartir el código, las plantillas y los apuntes que uso en mi día a día.
+          </p>
+          <a href="https://github.com/tu-usuario" target="_blank" class="inline-block bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-black hover:text-white transition-colors underline decoration-2 underline-offset-4">
+            Ver mi GitHub
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Script para la lógica de filtrado -->
+    <script>
+      const botones = document.querySelectorAll('.filtro-btn');
+      const tarjetas = document.querySelectorAll('.recurso-card');
+
+      botones.forEach(boton => {
+        boton.addEventListener('click', () => {
+          const filtro = boton.getAttribute('data-filtro');
+          
+          tarjetas.forEach(tarjeta => {
+            if (filtro === 'todos' || tarjeta.getAttribute('data-categoria') === filtro) {
+              tarjeta.style.display = 'flex';
+            } else {
+              tarjeta.style.display = 'none';
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
