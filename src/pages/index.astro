@@ -23,13 +23,28 @@ const recursos = [
 ---
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Kev | Digital - Recursos Gratuitos</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
-  </head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Kev | Digital - Recursos Gratuitos para Tech</title>
+  
+  <!-- SEO Básico -->
+  <meta name="description" content="Apuntes, código, esquemas SQL y plantillas gratuitas para estudiantes de computación y desarrolladores backend. Descarga directa." />
+  <meta name="keywords" content="recursos programación, plantillas excel estudiantes, esquemas sql, spring boot peru, kev digital, apuntes backend" />
+  <meta name="author" content="Kev" />
+
+  <!-- Open Graph / Redes Sociales -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kev-digital-web.vercel.app/" />
+  <meta property="og:title" content="Kev | Digital - Apuntes y Código" />
+  <meta property="og:description" content="Recursos, plantillas y código para sobrevivir en tech. Totalmente gratis." />
+  <!-- TODO: Sube una imagen de portada (1200x630px) a tu carpeta public y cambia este enlace -->
+  <meta property="og:image" content="https://kev-digital-web.vercel.app/portada-seo.jpg" />
+
+  <!-- Tipografía -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+</head>
   
   <style is:global>
     @import "tailwindcss";
@@ -78,7 +93,7 @@ const recursos = [
       <section class="bg-white border-4 border-black p-8 shadow-[8px_8px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row gap-8 items-center">
         <div class="w-32 h-32 bg-gray-200 border-4 border-black flex-shrink-0 flex items-center justify-center overflow-hidden">
           <!-- TODO: Reemplazar por tu foto real -->
-          <span class="text-xs font-bold text-center p-2">TU FOTO AQUÍ</span>
+          <span class="text-xs font-bold text-center p-2"><img src="/mi-foto.jpg" alt="Foto de Kev" class="w-full h-full object-cover" /></span>
         </div>
         <div>
           <h2 class="text-3xl font-bold mb-3 uppercase">Sobre mí</h2>
