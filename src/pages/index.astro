@@ -166,13 +166,13 @@ const recursos = [
     });
   });
 
-  // --- NUEVO: Lógica del Formulario Lead Magnet ---
+  // --- Lógica del Formulario Lead Magnet ---
   const form = document.getElementById('lead-magnet-form');
   const successMsg = document.getElementById('form-success-msg');
 
   if (form) {
     form.addEventListener('submit', async function(event) {
-      event.preventDefault(); // Evita que la página recargue o salte a Formspree
+      event.preventDefault(); // Evita que la página recargue
 
       const formData = new FormData(form);
       const url = form.getAttribute('action');
@@ -193,16 +193,27 @@ const recursos = [
         });
 
         if (response.ok) {
-          // Si todo salió bien, mostramos el mensaje de éxito sobre el formulario
+          // Si todo salió bien, mostramos el mensaje de éxito
           successMsg.classList.remove('hidden');
           form.reset(); // Limpia el campo de correo
         } else {
-          alert("Hubo un problema al enviar el correo. Por favor, intenta de nuevo.");
+          // Si la respuesta de Formspree indica un error (ej. configuración incorrecta)
+          const data = await response.json();
+          console.error("Error de Formspree:", data);
+
+          if (Object.hasOwn(data, 'errors')) {
+            alert("Error: " + data["errors"].map(error => error["message"]).join(", "));
+          } else {
+             alert("Hubo un problema al enviar el formulario.");
+          }
+
           submitButton.innerHTML = originalText;
           submitButton.disabled = false;
         }
       } catch (error) {
-        alert("Error de conexión. Intenta de nuevo.");
+         // Si hay un error de red o fetch falla por completo
+        console.error("Error de conexión:", error);
+        alert("Error de conexión. Revisa tu internet e intenta de nuevo.");
         submitButton.innerHTML = originalText;
         submitButton.disabled = false;
       }
