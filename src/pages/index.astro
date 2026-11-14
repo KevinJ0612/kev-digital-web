@@ -8,6 +8,12 @@ const recursos = [
     enlace: "https://drive.google.com/drive/folders/19AzIQjxuaYJmyHX94fv3VjjVLfvf9Zqy?usp=drive_link"
   },
   {
+titulo: "Cheat Sheet: Atajos de Excel",
+categoria: "Productividad",
+descripcion: "Los comandos de teclado que te ahorrarán horas de trabajo en hojas de cálculo.",
+enlace: "#"
+},
+  {
     titulo: "Plantilla de Presupuesto",
     categoria: "Finanzas",
     descripcion: "Excel automatizado para controlar gastos universitarios.",
@@ -23,28 +29,26 @@ const recursos = [
 ---
 <html lang="es">
   <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>Kev | Digital - Recursos Gratuitos para Tech</title>
-  
-  <!-- SEO Básico -->
-  <meta name="description" content="Apuntes, código, esquemas SQL y plantillas gratuitas para estudiantes de computación y desarrolladores backend. Descarga directa." />
-  <meta name="keywords" content="recursos programación, plantillas excel estudiantes, esquemas sql, spring boot peru, kev digital, apuntes backend" />
-  <meta name="author" content="Kev" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Kev | Digital - Recursos Gratuitos</title>
+    
+    <!-- SEO Básico -->
+    <meta name="description" content="Apuntes, código, esquemas SQL y plantillas gratuitas para estudiantes de computación y desarrolladores backend. Descarga directa." />
+    <meta name="keywords" content="recursos programación, plantillas excel estudiantes, esquemas sql, spring boot peru, kev digital, apuntes backend" />
+    <meta name="author" content="Kev" />
 
-  <!-- Open Graph / Redes Sociales -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://kev-digital-web.vercel.app/" />
-  <meta property="og:title" content="Kev | Digital - Apuntes y Código" />
-  <meta property="og:description" content="Recursos, plantillas y código para sobrevivir en tech. Totalmente gratis." />
-  <!-- TODO: Sube una imagen de portada (1200x630px) a tu carpeta public y cambia este enlace -->
-  <meta property="og:image" content="https://kev-digital-web.vercel.app/portada-seo.jpg" />
+    <!-- Open Graph / Redes Sociales -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kev-digital-web.vercel.app/" />
+    <meta property="og:title" content="Kev | Digital - Apuntes y Código" />
+    <meta property="og:description" content="Recursos, plantillas y código para sobrevivir en tech. Totalmente gratis." />
+    <meta property="og:image" content="https://kev-digital-web.vercel.app/portada-seo.jpg" />
 
-  <!-- Tipografía -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  </head>
   
   <style is:global>
     @import "tailwindcss";
@@ -65,25 +69,25 @@ const recursos = [
       </header>
 
       <!-- Barra de Filtros y Buscador -->
-  <div class="flex flex-col md:flex-row gap-4 mb-8 items-start md:items-center justify-between" id="filtros-container">
-    <nav class="flex flex-wrap gap-4" id="filtros">
-      <button data-filtro="todos" class="filtro-btn bg-black text-white font-bold py-2 px-4 border-2 border-black hover:bg-white hover:text-black transition-colors">Todos</button>
-      <button data-filtro="Desarrollo" class="filtro-btn bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-green-400 transition-colors">Desarrollo</button>
-      <button data-filtro="Finanzas" class="filtro-btn bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-green-400 transition-colors">Finanzas</button>
-      <button data-filtro="Bases de Datos" class="filtro-btn bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-green-400 transition-colors">Bases de Datos</button>
-    </nav>
-    
-    <!-- Nuevo Buscador -->
-    <div class="w-full md:w-72">
-      <input 
-        type="text" 
-        id="buscador" 
-        placeholder="Buscar apuntes..." 
-        class="w-full p-2 border-4 border-black font-bold focus:outline-none focus:bg-gray-100 shadow-[4px_4px_0px_rgba(0,0,0,1)]"
-      />
-    </div>
-  </div>
-
+      <div class="flex flex-col md:flex-row gap-4 mb-8 items-start md:items-center justify-between" id="filtros-container">
+        <nav class="flex flex-wrap gap-4" id="filtros">
+          <button data-filtro="todos" class="filtro-btn bg-black text-white font-bold py-2 px-4 border-2 border-black hover:bg-white hover:text-black transition-colors">Todos</button>
+          <button data-filtro="Desarrollo" class="filtro-btn bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-green-400 transition-colors">Desarrollo</button>
+          <button data-filtro="Productividad" class="filtro-btn bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-green-400 transition-colors">Productividad</button>
+          <button data-filtro="Finanzas" class="filtro-btn bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-green-400 transition-colors">Finanzas</button>
+          <button data-filtro="Bases de Datos" class="filtro-btn bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-green-400 transition-colors">Bases de Datos</button>
+        </nav>
+        
+        <!-- Buscador -->
+        <div class="w-full md:w-72">
+          <input 
+            type="text" 
+            id="buscador" 
+            placeholder="Buscar apuntes..." 
+            class="w-full p-2 border-4 border-black font-bold focus:outline-none focus:bg-gray-100 shadow-[4px_4px_0px_rgba(0,0,0,1)]"
+          />
+        </div>
+      </div>
 
       <!-- Cuadrícula de Recursos -->
       <section id="recursos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
@@ -103,51 +107,47 @@ const recursos = [
       </section>
 
       <!-- Lead Magnet (Captación de Audiencia) -->
-<section class="bg-blue-500 border-4 border-black p-8 shadow-[8px_8px_0px_rgba(0,0,0,1)] mb-16 flex flex-col md:flex-row gap-8 items-center justify-between">
-  <div class="text-white max-w-2xl">
-    <span class="inline-block bg-yellow-400 text-black border-2 border-black px-3 py-1 text-xs font-bold uppercase mb-4">
-      Recurso Premium Gratuito
-    </span>
-    <h2 class="text-3xl md:text-4xl font-bold mb-4 uppercase leading-tight">La guía definitiva de Spring Boot para entrevistas</h2>
-    <p class="text-lg font-medium">
-      Déjame tu correo y te envío gratis el PDF con las preguntas, arquitecturas y anotaciones que me ayudaron a dominar el desarrollo backend.
-    </p>
-  </div>
-  
-  <form id="lead-magnet-form" action="https://formspree.io/f/xljbgpyy" method="POST" class="w-full md:w-auto flex flex-col sm:flex-row gap-4 relative">
-  <!-- El input del correo (asegúrate de que tenga el name="email") -->
-  <input 
-    type="email" 
-    name="email"
-    placeholder="tu@correo.com" 
-    required 
-    class="p-4 border-4 border-black text-black font-bold text-lg focus:outline-none focus:bg-gray-100 w-full md:w-72"
-  />
-  
-  <!-- El botón de envío -->
-  <button 
-    type="submit" 
-    class="bg-yellow-400 text-black font-bold text-lg py-4 px-8 border-4 border-black hover:-translate-y-1 hover:-rotate-2 hover:shadow-[6px_6px_0px_rgba(0,0,0,1)] transition-all">
-    ¡Quiero la guía!
-  </button>
-  
-  <!-- Mensaje de éxito oculto inicialmente -->
-  <div id="form-success-msg" class="hidden absolute top-0 left-0 w-full h-full bg-blue-500 flex items-center justify-center border-4 border-black shadow-[6px_6px_0px_rgba(0,0,0,1)]">
-    <p class="text-white font-bold text-xl text-center px-4">¡Listo! Revisa tu correo, la guía va en camino 🚀</p>
-  </div>
-</form>
-</section>
-      
+      <section class="bg-blue-500 border-4 border-black p-8 shadow-[8px_8px_0px_rgba(0,0,0,1)] mb-16 flex flex-col md:flex-row gap-8 items-center justify-between relative">
+        <div class="text-white max-w-2xl">
+          <span class="inline-block bg-yellow-400 text-black border-2 border-black px-3 py-1 text-xs font-bold uppercase mb-4">
+            Recurso Premium Gratuito
+          </span>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 uppercase leading-tight">La guía definitiva de Spring Boot para entrevistas</h2>
+          <p class="text-lg font-medium">
+            Déjame tu correo y te envío gratis el PDF con las preguntas, arquitecturas y anotaciones que me ayudaron a dominar el desarrollo backend.
+          </p>
+        </div>
+        
+        <form id="lead-magnet-form" action="https://formspree.io/f/xljbgpyy" method="POST" class="w-full md:w-auto flex flex-col sm:flex-row gap-4 relative">
+          <input 
+            type="email" 
+            name="email"
+            placeholder="tu@correo.com" 
+            required 
+            class="p-4 border-4 border-black text-black font-bold text-lg focus:outline-none focus:bg-gray-100 w-full md:w-72"
+          />
+          <button 
+            type="submit" 
+            class="bg-yellow-400 text-black font-bold text-lg py-4 px-8 border-4 border-black hover:-translate-y-1 hover:-rotate-2 hover:shadow-[6px_6px_0px_rgba(0,0,0,1)] transition-all">
+            ¡Quiero la guía!
+          </button>
+
+          <!-- Mensaje de éxito oculto inicialmente -->
+          <div id="form-success-msg" class="hidden absolute top-0 left-0 w-full h-full bg-blue-500 flex items-center justify-center border-4 border-black shadow-[6px_6px_0px_rgba(0,0,0,1)]">
+            <p class="text-white font-bold text-xl text-center px-4">¡Listo! Abriendo guía... 🚀</p>
+          </div>
+        </form>
+      </section>
+
       <!-- Sobre el Creador (Autenticidad) -->
       <section class="bg-white border-4 border-black p-8 shadow-[8px_8px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row gap-8 items-center">
-       <div class="w-32 h-32 bg-gray-200 border-4 border-black flex-shrink-0 overflow-hidden">
-        <!--tu foto de perfil aqui -->
-  <img src="/Foto 2.png" alt="Foto de Kev" class="w-full h-full object-cover" />
-</div>
+        <div class="w-32 h-32 bg-gray-200 border-4 border-black flex-shrink-0 overflow-hidden">
+          <img src="/Foto2.png" alt="Foto de Kev" class="w-full h-full object-cover" />
+        </div>
         <div>
           <h2 class="text-3xl font-bold mb-3 uppercase">Sobre mí</h2>
           <p class="text-lg font-medium text-gray-800 mb-4">
-            Soy estudiante de Ingenieria de Software en Perú,  desarrollador backend (Java/Spring Boot) y creador de contenido. Construí este espacio para compartir el código, las plantillas y los apuntes que uso en mi día a día.
+            Soy estudiante de Computación e Informática, desarrollador backend (Java/Spring Boot) y creador de contenido. Construí este espacio para compartir el código, las plantillas y los apuntes que uso en mi día a día.
           </p>
           <a href="https://github.com/KevinJ0612" target="_blank" class="inline-block bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-black hover:text-white transition-colors underline decoration-2 underline-offset-4">
             Ver mi GitHub
@@ -157,64 +157,78 @@ const recursos = [
 
     </main>
 
-    <!-- Script para la lógica de filtrado -->
-   <script>
-  // --- Lógica de Filtros (ya la tenías) ---
-  const botones = document.querySelectorAll('.filtro-btn');
-  const tarjetas = document.querySelectorAll('.recurso-card');
+    <!-- Scripts -->
+    <script>
+      // --- LÓGICA DE FILTRADO Y BÚSQUEDA ---
+      const botones = document.querySelectorAll('.filtro-btn');
+      const tarjetas = document.querySelectorAll('.recurso-card');
+      const buscador = document.getElementById('buscador');
+      let filtroActual = 'todos';
 
-  botones.forEach(boton => {
-    boton.addEventListener('click', () => {
-      const filtro = boton.getAttribute('data-filtro');
-      
-      tarjetas.forEach(tarjeta => {
-        if (filtro === 'todos' || tarjeta.getAttribute('data-categoria') === filtro) {
-          tarjeta.classList.remove('hidden');
-          tarjeta.classList.add('flex');
-        } else {
-          tarjeta.classList.remove('flex');
-          tarjeta.classList.add('hidden');
-        }
+      function aplicarFiltros() {
+        const textoBuscado = buscador.value.toLowerCase();
+
+        tarjetas.forEach(tarjeta => {
+          const categoria = tarjeta.getAttribute('data-categoria');
+          const titulo = tarjeta.querySelector('h3').textContent.toLowerCase();
+          const descripcion = tarjeta.querySelector('p').textContent.toLowerCase();
+
+          // Verifica si cumple con el botón de categoría
+          const coincideCategoria = filtroActual === 'todos' || categoria === filtroActual;
+          // Verifica si cumple con el texto buscado
+          const coincideBusqueda = titulo.includes(textoBuscado) || descripcion.includes(textoBuscado);
+
+          if (coincideCategoria && coincideBusqueda) {
+            tarjeta.classList.remove('hidden');
+            tarjeta.classList.add('flex');
+          } else {
+            tarjeta.classList.remove('flex');
+            tarjeta.classList.add('hidden');
+          }
+        });
+      }
+
+      // Eventos para los botones de categoría
+      botones.forEach(boton => {
+        boton.addEventListener('click', () => {
+          filtroActual = boton.getAttribute('data-filtro');
+          aplicarFiltros();
+        });
       });
-    });
-  });
 
-  // --- Lógica del Formulario Lead Magnet ---
+      // Evento para cuando escribes en el buscador
+      buscador.addEventListener('input', aplicarFiltros);
+
+      // --- LÓGICA DEL FORMULARIO LEAD MAGNET (REDIRECCIÓN) ---
       const form = document.getElementById('lead-magnet-form');
       const successMsg = document.getElementById('form-success-msg');
 
       if (form) {
         form.addEventListener('submit', async function(event) {
-          event.preventDefault(); // Evita que la página recargue
+          event.preventDefault();
 
           const formData = new FormData(form);
           const url = form.getAttribute('action');
           const submitButton = form.querySelector('button[type="submit"]');
 
-          // Cambia el texto del botón mientras envía
           const originalText = submitButton.innerHTML;
-          submitButton.innerHTML = "Abriendo guía..."; // Cambiamos el texto
+          submitButton.innerHTML = "Abriendo guía..."; 
           submitButton.disabled = true;
 
           try {
             const response = await fetch(url, {
               method: 'POST',
               body: formData,
-              headers: {
-                'Accept': 'application/json'
-              }
+              headers: { 'Accept': 'application/json' }
             });
 
             if (response.ok) {
-              // Mostramos el mensaje de éxito
               successMsg.classList.remove('hidden');
-              form.reset(); // Limpia el campo
+              form.reset(); 
               
-              // LA MAGIA: Esperamos 1 segundo y lo enviamos al PDF
               setTimeout(() => {
-                  // Reemplaza esto con TU ENLACE REAL de Google Drive o donde esté tu PDF
                   window.location.href = "https://docs.google.com/document/d/TU_ENLACE_AQUI/edit?usp=sharing";
-              }, 1500); // 1500 milisegundos = 1.5 segundos
+              }, 1500); 
               
             } else {
               alert("Hubo un problema al guardar tu correo. Intenta de nuevo.");
@@ -228,6 +242,6 @@ const recursos = [
           }
         });
       }
-</script>
+    </script>
   </body>
 </html>
