@@ -101,24 +101,28 @@ const recursos = [
     </p>
   </div>
   
-  <form id="lead-magnet-form" action="https://formspree.io/f/xljbgpyy" method="POST" class="w-full md:w-auto flex flex-col sm:flex-row gap-4">
-    <input 
-      type="email" 
-      name="email"
-      placeholder="tu@correo.com" 
-      required 
-      class="p-4 border-4 border-black text-black font-bold text-lg focus:outline-none focus:bg-gray-100 w-full md:w-72"
-    />
-    <button 
-      type="submit" 
-      class="bg-yellow-400 text-black font-bold text-lg py-4 px-8 border-4 border-black hover:-translate-y-1 hover:-rotate-2 hover:shadow-[6px_6px_0px_rgba(0,0,0,1)] transition-all">
-      ¡Quiero la guía!
-    </button>
-    <!-- Mensaje de éxito oculto inicialmente -->
+  <form id="lead-magnet-form" action="https://formspree.io/f/xljbgpyy" method="POST" class="w-full md:w-auto flex flex-col sm:flex-row gap-4 relative">
+  <!-- El input del correo (asegúrate de que tenga el name="email") -->
+  <input 
+    type="email" 
+    name="email"
+    placeholder="tu@correo.com" 
+    required 
+    class="p-4 border-4 border-black text-black font-bold text-lg focus:outline-none focus:bg-gray-100 w-full md:w-72"
+  />
+  
+  <!-- El botón de envío -->
+  <button 
+    type="submit" 
+    class="bg-yellow-400 text-black font-bold text-lg py-4 px-8 border-4 border-black hover:-translate-y-1 hover:-rotate-2 hover:shadow-[6px_6px_0px_rgba(0,0,0,1)] transition-all">
+    ¡Quiero la guía!
+  </button>
+  
+  <!-- Mensaje de éxito oculto inicialmente -->
   <div id="form-success-msg" class="hidden absolute top-0 left-0 w-full h-full bg-blue-500 flex items-center justify-center border-4 border-black shadow-[6px_6px_0px_rgba(0,0,0,1)]">
     <p class="text-white font-bold text-xl text-center px-4">¡Listo! Revisa tu correo, la guía va en camino 🚀</p>
   </div>
-  </form>
+</form>
 </section>
       
       <!-- Sobre el Creador (Autenticidad) -->
@@ -130,7 +134,7 @@ const recursos = [
         <div>
           <h2 class="text-3xl font-bold mb-3 uppercase">Sobre mí</h2>
           <p class="text-lg font-medium text-gray-800 mb-4">
-            Soy estudiante de Ingenieria de Software, desarrollador backend (Java/Spring Boot) y creador de contenido. Construí este espacio para compartir el código, las plantillas y los apuntes que uso en mi día a día.
+            Soy estudiante de Ingenieria de Software en Perú,  desarrollador backend (Java/Spring Boot) y creador de contenido. Construí este espacio para compartir el código, las plantillas y los apuntes que uso en mi día a día.
           </p>
           <a href="https://github.com/KevinJ0612" target="_blank" class="inline-block bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-black hover:text-white transition-colors underline decoration-2 underline-offset-4">
             Ver mi GitHub
