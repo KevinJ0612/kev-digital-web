@@ -64,13 +64,26 @@ const recursos = [
         </a>
       </header>
 
-      <!-- Barra de Filtros -->
-      <nav class="flex flex-wrap gap-4 mb-8" id="filtros">
-        <button data-filtro="todos" class="filtro-btn bg-black text-white font-bold py-2 px-4 border-2 border-black hover:bg-white hover:text-black transition-colors">Todos</button>
-        <button data-filtro="Desarrollo" class="filtro-btn bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-green-400 transition-colors">Desarrollo</button>
-        <button data-filtro="Finanzas" class="filtro-btn bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-green-400 transition-colors">Finanzas</button>
-        <button data-filtro="Bases de Datos" class="filtro-btn bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-green-400 transition-colors">Bases de Datos</button>
-      </nav>
+      <!-- Barra de Filtros y Buscador -->
+  <div class="flex flex-col md:flex-row gap-4 mb-8 items-start md:items-center justify-between" id="filtros-container">
+    <nav class="flex flex-wrap gap-4" id="filtros">
+      <button data-filtro="todos" class="filtro-btn bg-black text-white font-bold py-2 px-4 border-2 border-black hover:bg-white hover:text-black transition-colors">Todos</button>
+      <button data-filtro="Desarrollo" class="filtro-btn bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-green-400 transition-colors">Desarrollo</button>
+      <button data-filtro="Finanzas" class="filtro-btn bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-green-400 transition-colors">Finanzas</button>
+      <button data-filtro="Bases de Datos" class="filtro-btn bg-white text-black font-bold py-2 px-4 border-2 border-black hover:bg-green-400 transition-colors">Bases de Datos</button>
+    </nav>
+    
+    <!-- Nuevo Buscador -->
+    <div class="w-full md:w-72">
+      <input 
+        type="text" 
+        id="buscador" 
+        placeholder="Buscar apuntes..." 
+        class="w-full p-2 border-4 border-black font-bold focus:outline-none focus:bg-gray-100 shadow-[4px_4px_0px_rgba(0,0,0,1)]"
+      />
+    </div>
+  </div>
+
 
       <!-- Cuadrícula de Recursos -->
       <section id="recursos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
