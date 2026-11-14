@@ -101,7 +101,7 @@ const recursos = [
     </p>
   </div>
   
-  <form action="https://formspree.io/f/xljbgpyy" method="POST" class="w-full md:w-auto flex flex-col sm:flex-row gap-4">
+  <form id="lead-magnet-form" action="https://formspree.io/f/xljbgpyy" method="POST" class="w-full md:w-auto flex flex-col sm:flex-row gap-4">
     <input 
       type="email" 
       name="email"
@@ -114,6 +114,10 @@ const recursos = [
       class="bg-yellow-400 text-black font-bold text-lg py-4 px-8 border-4 border-black hover:-translate-y-1 hover:-rotate-2 hover:shadow-[6px_6px_0px_rgba(0,0,0,1)] transition-all">
       ¡Quiero la guía!
     </button>
+    <!-- Mensaje de éxito oculto inicialmente -->
+  <div id="form-success-msg" class="hidden absolute top-0 left-0 w-full h-full bg-blue-500 flex items-center justify-center border-4 border-black shadow-[6px_6px_0px_rgba(0,0,0,1)]">
+    <p class="text-white font-bold text-xl text-center px-4">¡Listo! Revisa tu correo, la guía va en camino 🚀</p>
+  </div>
   </form>
 </section>
       
@@ -138,6 +142,7 @@ const recursos = [
 
     <!-- Script para la lógica de filtrado -->
    <script>
+  // --- Lógica de Filtros (ya la tenías) ---
   const botones = document.querySelectorAll('.filtro-btn');
   const tarjetas = document.querySelectorAll('.recurso-card');
 
@@ -156,6 +161,49 @@ const recursos = [
       });
     });
   });
+
+  // --- NUEVO: Lógica del Formulario Lead Magnet ---
+  const form = document.getElementById('lead-magnet-form');
+  const successMsg = document.getElementById('form-success-msg');
+
+  if (form) {
+    form.addEventListener('submit', async function(event) {
+      event.preventDefault(); // Evita que la página recargue o salte a Formspree
+
+      const formData = new FormData(form);
+      const url = form.getAttribute('action');
+      const submitButton = form.querySelector('button[type="submit"]');
+
+      // Cambia el texto del botón mientras envía
+      const originalText = submitButton.innerHTML;
+      submitButton.innerHTML = "Enviando...";
+      submitButton.disabled = true;
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          // Si todo salió bien, mostramos el mensaje de éxito sobre el formulario
+          successMsg.classList.remove('hidden');
+          form.reset(); // Limpia el campo de correo
+        } else {
+          alert("Hubo un problema al enviar el correo. Por favor, intenta de nuevo.");
+          submitButton.innerHTML = originalText;
+          submitButton.disabled = false;
+        }
+      } catch (error) {
+        alert("Error de conexión. Intenta de nuevo.");
+        submitButton.innerHTML = originalText;
+        submitButton.disabled = false;
+      }
+    });
+  }
 </script>
   </body>
 </html>
