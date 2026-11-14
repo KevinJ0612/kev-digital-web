@@ -167,58 +167,54 @@ const recursos = [
   });
 
   // --- Lógica del Formulario Lead Magnet ---
-  const form = document.getElementById('lead-magnet-form');
-  const successMsg = document.getElementById('form-success-msg');
+      const form = document.getElementById('lead-magnet-form');
+      const successMsg = document.getElementById('form-success-msg');
 
-  if (form) {
-    form.addEventListener('submit', async function(event) {
-      event.preventDefault(); // Evita que la página recargue
+      if (form) {
+        form.addEventListener('submit', async function(event) {
+          event.preventDefault(); // Evita que la página recargue
 
-      const formData = new FormData(form);
-      const url = form.getAttribute('action');
-      const submitButton = form.querySelector('button[type="submit"]');
+          const formData = new FormData(form);
+          const url = form.getAttribute('action');
+          const submitButton = form.querySelector('button[type="submit"]');
 
-      // Cambia el texto del botón mientras envía
-      const originalText = submitButton.innerHTML;
-      submitButton.innerHTML = "Enviando...";
-      submitButton.disabled = true;
+          // Cambia el texto del botón mientras envía
+          const originalText = submitButton.innerHTML;
+          submitButton.innerHTML = "Abriendo guía..."; // Cambiamos el texto
+          submitButton.disabled = true;
 
-      try {
-        const response = await fetch(url, {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
+          try {
+            const response = await fetch(url, {
+              method: 'POST',
+              body: formData,
+              headers: {
+                'Accept': 'application/json'
+              }
+            });
+
+            if (response.ok) {
+              // Mostramos el mensaje de éxito
+              successMsg.classList.remove('hidden');
+              form.reset(); // Limpia el campo
+              
+              // LA MAGIA: Esperamos 1 segundo y lo enviamos al PDF
+              setTimeout(() => {
+                  // Reemplaza esto con TU ENLACE REAL de Google Drive o donde esté tu PDF
+                  window.location.href = "https://docs.google.com/document/d/TU_ENLACE_AQUI/edit?usp=sharing";
+              }, 1500); // 1500 milisegundos = 1.5 segundos
+              
+            } else {
+              alert("Hubo un problema al guardar tu correo. Intenta de nuevo.");
+              submitButton.innerHTML = originalText;
+              submitButton.disabled = false;
+            }
+          } catch (error) {
+            alert("Error de conexión. Revisa tu internet e intenta de nuevo.");
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
           }
         });
-
-        if (response.ok) {
-          // Si todo salió bien, mostramos el mensaje de éxito
-          successMsg.classList.remove('hidden');
-          form.reset(); // Limpia el campo de correo
-        } else {
-          // Si la respuesta de Formspree indica un error (ej. configuración incorrecta)
-          const data = await response.json();
-          console.error("Error de Formspree:", data);
-
-          if (Object.hasOwn(data, 'errors')) {
-            alert("Error: " + data["errors"].map(error => error["message"]).join(", "));
-          } else {
-             alert("Hubo un problema al enviar el formulario.");
-          }
-
-          submitButton.innerHTML = originalText;
-          submitButton.disabled = false;
-        }
-      } catch (error) {
-         // Si hay un error de red o fetch falla por completo
-        console.error("Error de conexión:", error);
-        alert("Error de conexión. Revisa tu internet e intenta de nuevo.");
-        submitButton.innerHTML = originalText;
-        submitButton.disabled = false;
       }
-    });
-  }
 </script>
   </body>
 </html>
